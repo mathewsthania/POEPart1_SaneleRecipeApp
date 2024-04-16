@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace SaneleRecipeApp.Classes
 {
-	public class Ingredient
+	public class RecipeIngredients
 	{
 		// creating getters and setters for the ingredients
 		public string Name { get; set; }

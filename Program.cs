@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Thania_PROG6221_POE.Classes;
+using SaneleRecipeApp.Classes;
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -34,42 +34,62 @@ namespace SaneleRecipeApp
 	{
 		static void Main(string[] args)
 		{
+			// Creating an opening line to welcome the user to the application.
 			Console.WriteLine("Welcome to Sanele's Recipe App!");
 
-			// creating boolean to initialize exit to false - so that the program does not close yet.
-			bool exit = false;
+			// Creating an object of the RecipeMethods class - so that we can access the specific classes needed
+			SaneleRecipeApp.Classes.RecipeMethods recipe1 = new SaneleRecipeApp.Classes.RecipeMethods();
 
-			// creating loop - so that while the program is still running it must do the following.
-			while (!exit)
+			// Creating loop - so that while the program is still running it must do the following.
+			while (true)
 			{
-				Console.WriteLine("1. Enter a new recipe.");
-				Console.WriteLine("2. Clear all data.");
-				Console.WriteLine("3. Exit Application");
+				Console.WriteLine("Enter Reciple Details: ");
+				recipe1.EnterRecipeDetails();
+				Console.WriteLine(""); // creating space in between entering ingredients + steps and the displayed full recipe details
+				Console.WriteLine("------------------------------------------------------------------------------");
+				Console.WriteLine("");
+				recipe1.DisplayFinishedRecipe();
+				Console.WriteLine("");
+				Console.WriteLine("------------------------------------------------------------------------------");
+				Console.WriteLine(""); // creating space in between the fully displayed recipe and the loop of options
 
-				int choice = Convert.ToInt32(Console.ReadLine()); // allowing the users no. choice to be converted to int
+				Console.WriteLine("Would you like to scale the recipe? (Yes/No)");
+				string userChoice = Console.ReadLine().ToLower();
 
-				// creating a switch to display the different options that the user can choose from.
-				switch (choice)
+				while (userChoice == "yes")
 				{
-					case 1:
-						Console.WriteLine("Enter Reciple Details:");
-						Recipe recipe1 = new Recipe();
-						recipe1.EnterRecipeDetails();
+					Console.WriteLine("How would you like to scale the recipe, please choose from the options below: ");
+					Console.WriteLine("1. Half Recipe");
+					Console.WriteLine("2. Double Recipe");
+					Console.WriteLine("3. Triple Recipe");
+					Console.WriteLine("4. Reset Recipe to original scale.");
 
-						Console.WriteLine("Recipe:");
-						recipe1.DisplayRecipe();
-						break;
+					int userScalingOption = Convert.ToInt32(Console.ReadLine());
 
-					case 2:
-						Console.WriteLine("Recipe details have been cleared, please enter a new recipe.");
-						break;
+					switch (userScalingOption)
+					{
+						case 1:
+							recipe1.HalfRecipe();
+							continue;
 
-					case 3:
-						exit = true;
-						Console.WriteLine("Exiting Sanele's Recipe App....");
-						break;
+						case 2:
+							recipe1.DoubleRecipe();
+							continue;
 
+						case 3:
+							recipe1.TripleRecipe();
+							continue;
+
+						case 4:
+							recipe1.DisplayFinishedRecipe(); // calling method to display the original recipe that the user entered.
+							continue;
+
+						default:
+							Console.WriteLine("Invalid Option, please try again and choose a number FROM 1 TO 6!");
+							break;
+					}
 				}
+
 			}
 		}
 	}
