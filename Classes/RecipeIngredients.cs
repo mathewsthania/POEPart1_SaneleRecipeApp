@@ -12,6 +12,10 @@ using System.Threading.Tasks;
 /// Module: PROG6221
 /// Date: 2024/03/15
 /// </summary>
+/// This class stores the individiual ingredient details including get and set
+/// - NAME
+/// - QUANTITY
+/// - UNIT
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*THE*START*OF*FILE*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 

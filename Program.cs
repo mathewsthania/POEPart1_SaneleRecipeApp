@@ -34,52 +34,55 @@ namespace SaneleRecipeApp
 	{
 		static void Main(string[] args)
 		{
-			// Creating an opening line to welcome the user to the application.
+			// Creating an opening line to welcome the user to the application and a line to show the Main Menu
 			Console.WriteLine("Welcome to Sanele's Recipe App!");
 			Console.WriteLine("Main Menu:");
 
-			// Creating an object of the RecipeMethods class - so that we can access the specific classes needed
+			// Creating an object of the RecipeMethods class - so that we can access the specific methods that we need
 			SaneleRecipeApp.Classes.RecipeMethods recipe1 = new SaneleRecipeApp.Classes.RecipeMethods();
 
 			// Creating loop - so that while the program is still running it must do the following.
 			while (true)
 			{
-				Console.WriteLine("1. Enter a new Recipe.");
-				Console.WriteLine("2. Scale the Recipe.");
-				Console.WriteLine("3. Clear all data.");
-				Console.WriteLine("4. Exit Application.");
+				Console.WriteLine("1. Enter a new Recipe."); // enter a new recipe
+				Console.WriteLine("2. Scale the Recipe."); // scale the recipe - multiplying by 0.5/2/3
+				Console.WriteLine("3. Clear all data."); // clears all data in the application (reset)
+				Console.WriteLine("4. Exit Application."); 
 
+				// converting the users choice into int
 				int userChoice = Convert.ToInt32(Console.ReadLine());
 
+				// Creating a switch - to create actions for each of the options the user can choose from
 				switch (userChoice)
 				{
+					// case 1 calls the enterRecipeDetails() method to allow the user to enter the details of the recipe
 					case 1:
 						Console.WriteLine("------------------------------------------------------------------------------");
 						Console.WriteLine("");
 						recipe1.EnterRecipeDetails();
 						Console.WriteLine("");
 						Console.WriteLine("------------------------------------------------------------------------------");
-						recipe1.DisplayFinishedRecipe();
+						recipe1.DisplayFinishedRecipe(); // calls the DisplayFinishedRecipe() method by using the recipe1 object - displays the entire recipe after user enters recipe details.
 						Console.WriteLine("");
 						Console.WriteLine("------------------------------------------------------------------------------");
 						break;
 
 					case 2:
-						recipe1.ScaleRecipe();
+						recipe1.ScaleRecipe(); // calls the ScaleRecipe() method by using the recipe1 object
 						break;
 
 					case 3:
-						recipe1.ClearAllRecipeData();
+						recipe1.ClearAllRecipeData(); // calls the ClearAllRecipeData() method by using the recipe1 object. - clears all aplication data.
 						Console.WriteLine("All Recipe data has been cleared successfully!");
 						break;
 
-					case 4:
+					case 4: 
 						Console.WriteLine("Exiting Recipe Application..... We hope to see you soon!");
-						return;
+						return; // exits application
 
 					default:
-						Console.WriteLine("Invalid Option, please try again and choose a number FROM 1 TO 6!");
-						break;
+						Console.WriteLine("Invalid Option, please try again and choose a number FROM 1 TO 4!");
+						break; // default made, incase user enters a number outside the options list.
 				}
 				
 

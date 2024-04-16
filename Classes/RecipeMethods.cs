@@ -21,6 +21,11 @@ using SaneleRecipeApp.Classes;
 /// 3. HalfRecipe() method
 /// 4. DoubleRecipe() method
 /// 5. TripleRecipe() method
+/// 6. ScaleRecipe() method
+/// 7. ResetRecipeToOriginalScale() method
+/// 8. ClearAllRecipeData()
+/// 
+/// These methods all help to make our recipe application work and for it to carry out the necessary functions.
 /// 
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*THE*START*OF*FILE*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -98,12 +103,13 @@ namespace SaneleRecipeApp.Classes
 		// Method created to display the entire recipe, after user has entered all the ingredients + steps
 		public void DisplayFinishedRecipe()
 		{
+			// changes the colour of the Text for recipe name to Magenta
 			Console.ForegroundColor = ConsoleColor.Magenta;
 
 			// Displaying the name of the specific recipe.
 			Console.WriteLine($"Recipe: {RecipeName}");
 
-			Console.ResetColor();
+			Console.ResetColor(); // resets the colour back to the standard console colour (WHITE).
 
 			Console.ForegroundColor = ConsoleColor.Magenta;
 			Console.WriteLine("Ingredients: "); // displaying the list of the ingredients - for the specific recipe.
@@ -133,18 +139,23 @@ namespace SaneleRecipeApp.Classes
 			}
 		}
 
-		
+
+		// This method is created to half the RECIPES ingredients (QUANTITY) by multiplying by 0.5
 		public void HalfRecipe()
 		{
+			// this loop is created to loop through each ingredient in the recipe and muliply it by 0.5
 			foreach (var ingredient in Ingredients)
 			{
 				ingredient.Quantity *= 0.5;
 			}
 
+			// changes the colour of the Text for recipe name to DarkRed.
 			Console.ForegroundColor = ConsoleColor.DarkRed;
+
 			// Displaying the name of the specific recipe.
 			Console.WriteLine($"Halved Recipe: {RecipeName}");
-			Console.ResetColor();
+
+			Console.ResetColor(); // resets the colour back to the standard console colour.
 
 			Console.ForegroundColor = ConsoleColor.DarkRed;
 			Console.WriteLine("Ingredients: "); // displaying the list of the ingredients - for the specific recipe.
@@ -168,8 +179,10 @@ namespace SaneleRecipeApp.Classes
 			}
 		}
 
+		// This method is created to double the RECIPES ingredients (QUANTITY) by multiplying by 2
 		public void DoubleRecipe()
 		{
+			// loop through and muliply each ingredient by 2
 			foreach (var ingredient in Ingredients)
 			{
 				ingredient.Quantity *= 2;
@@ -202,8 +215,10 @@ namespace SaneleRecipeApp.Classes
 			}
 		}
 
+		// This method is created to triple the RECIPES ingredients (QUANTITY) by multiplying by 3
 		public void TripleRecipe()
 		{
+			// loop through and muliply each ingredient by 3
 			foreach (var ingredient in Ingredients)
 			{
 				ingredient.Quantity *= 3;
@@ -278,16 +293,20 @@ namespace SaneleRecipeApp.Classes
 			}
 		}
 
+		// This method is created to reset the recipe data to its original scale/form, after it has been scaled by the user
 		public void ResetRecipeToOriginalScale()
 		{
-			Ingredients.Clear();
+			Ingredients.Clear(); // clears the current list of ingredients
 
-			Ingredients.AddRange(originalScale);
+			Ingredients.AddRange(originalScale); // adds the ingredients(QUANTITIES) from the orginalScaleList array to the current list of ingredeints
 
-			Console.ForegroundColor = ConsoleColor.Magenta;
+			// changes the colour of the Text for recipe name to Magenta
+			Console.ForegroundColor = ConsoleColor.Magenta; 
+
 			// Displaying the name of the specific recipe.
 			Console.WriteLine($"Original Recipe: {RecipeName}");
-			Console.ResetColor();
+
+			Console.ResetColor(); // resets the colour back to the standard console colour.
 
 			Console.ForegroundColor = ConsoleColor.Magenta;
 			Console.WriteLine("Ingredients: "); // displaying the list of the ingredients - for the specific recipe.
@@ -310,9 +329,10 @@ namespace SaneleRecipeApp.Classes
 
 		}
 
+		// This method is created to clear all the data in the application - so that the user can enter a new recipe
 		public void ClearAllRecipeData()
 		{
-			RecipeName = "";
+			RecipeName = ""; // clears recipe name
 			Ingredients.Clear();
 			Steps.Clear();
 			originalScale.Clear();
