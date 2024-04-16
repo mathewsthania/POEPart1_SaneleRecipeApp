@@ -36,6 +36,7 @@ namespace SaneleRecipeApp
 		{
 			// Creating an opening line to welcome the user to the application.
 			Console.WriteLine("Welcome to Sanele's Recipe App!");
+			Console.WriteLine("Main Menu:");
 
 			// Creating an object of the RecipeMethods class - so that we can access the specific classes needed
 			SaneleRecipeApp.Classes.RecipeMethods recipe1 = new SaneleRecipeApp.Classes.RecipeMethods();
@@ -43,52 +44,44 @@ namespace SaneleRecipeApp
 			// Creating loop - so that while the program is still running it must do the following.
 			while (true)
 			{
-				Console.WriteLine("Enter Reciple Details: ");
-				recipe1.EnterRecipeDetails();
-				Console.WriteLine(""); // creating space in between entering ingredients + steps and the displayed full recipe details
-				Console.WriteLine("------------------------------------------------------------------------------");
-				Console.WriteLine("");
-				recipe1.DisplayFinishedRecipe();
-				Console.WriteLine("");
-				Console.WriteLine("------------------------------------------------------------------------------");
-				Console.WriteLine(""); // creating space in between the fully displayed recipe and the loop of options
+				Console.WriteLine("1. Enter a new Recipe.");
+				Console.WriteLine("2. Scale the Recipe.");
+				Console.WriteLine("3. Clear all data.");
+				Console.WriteLine("4. Exit Application.");
 
-				Console.WriteLine("Would you like to scale the recipe? (Yes/No)");
-				string userChoice = Console.ReadLine().ToLower();
+				int userChoice = Convert.ToInt32(Console.ReadLine());
 
-				while (userChoice == "yes")
+				switch (userChoice)
 				{
-					Console.WriteLine("How would you like to scale the recipe, please choose from the options below: ");
-					Console.WriteLine("1. Half Recipe");
-					Console.WriteLine("2. Double Recipe");
-					Console.WriteLine("3. Triple Recipe");
-					Console.WriteLine("4. Reset Recipe to original scale.");
+					case 1:
+						Console.WriteLine("------------------------------------------------------------------------------");
+						Console.WriteLine("");
+						recipe1.EnterRecipeDetails();
+						Console.WriteLine("");
+						Console.WriteLine("------------------------------------------------------------------------------");
+						recipe1.DisplayFinishedRecipe();
+						Console.WriteLine("");
+						Console.WriteLine("------------------------------------------------------------------------------");
+						break;
 
-					int userScalingOption = Convert.ToInt32(Console.ReadLine());
+					case 2:
+						recipe1.ScaleRecipe();
+						break;
 
-					switch (userScalingOption)
-					{
-						case 1:
-							recipe1.HalfRecipe();
-							continue;
+					case 3:
+						recipe1.ClearAllRecipeData();
+						Console.WriteLine("All Recipe data has been cleared successfully!");
+						break;
 
-						case 2:
-							recipe1.DoubleRecipe();
-							continue;
+					case 4:
+						Console.WriteLine("Exiting Recipe Application..... We hope to see you soon!");
+						return;
 
-						case 3:
-							recipe1.TripleRecipe();
-							continue;
-
-						case 4:
-							recipe1.DisplayFinishedRecipe(); // calling method to display the original recipe that the user entered.
-							continue;
-
-						default:
-							Console.WriteLine("Invalid Option, please try again and choose a number FROM 1 TO 6!");
-							break;
-					}
+					default:
+						Console.WriteLine("Invalid Option, please try again and choose a number FROM 1 TO 6!");
+						break;
 				}
+				
 
 			}
 		}
