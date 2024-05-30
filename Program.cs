@@ -101,10 +101,15 @@ namespace SaneleRecipeApp
 
 						Console.WriteLine("Please select a recipe to manage: ");
 
-						int selectedRecipeNumber;
-						if (int.TryParse(Console.ReadLine(), out selectedRecipeNumber) && selectedRecipeNumber > 0 && selectedRecipeNumber <= RecipeMethods1.AllRecipes.Count)
+						int selectedRecipeNumber; // declaring variable to store the recipe the user selected
+
+                        // checks if the user has entered a valid selection from the recipe list
+                        if (int.TryParse(Console.ReadLine(), out selectedRecipeNumber) && selectedRecipeNumber > 0 && selectedRecipeNumber <= RecipeMethods1.AllRecipes.Count)
 						{
+							// selects the name of the selected recipe
 							string selectedRecipeName = RecipeMethods1.AllRecipes.Keys.OrderBy(name => name).ToList()[selectedRecipeNumber - 1];
+							
+							// calls the recipeChange method while selecting the users recipe choice, so they can peform actions on that specific recipe
 							RecipeMethods1.AllRecipes[selectedRecipeName].RecipeChange();
 						}
 						else

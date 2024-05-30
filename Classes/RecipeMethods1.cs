@@ -243,12 +243,12 @@ namespace SaneleRecipeApp.Classes
 				Console.WriteLine($"{i + 1}. {Steps[i]}");
 			}
 
-
+			// Initialising the variable to store the total calories
             double totalCalories = 0;
 
-			foreach (var ingredient in Ingredients)
+			foreach (var ingredient in Ingredients) // to loop through each ingredient in the ingredient collection
 			{
-				totalCalories += ingredient.Calories;
+				totalCalories += ingredient.Calories; // adding all the ingredient calories together from a specific recipe
 			}
 
             Console.WriteLine("------------------------------------------------------------------------------");
@@ -257,6 +257,7 @@ namespace SaneleRecipeApp.Classes
             Console.ResetColor();
             Console.WriteLine("------------------------------------------------------------------------------");
 
+			// Checking if total calories exceed 300 and displaying a message if it does in Red
 			if (TotalCaloriesExceedsAmount(totalCalories))
 			{
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -274,18 +275,20 @@ namespace SaneleRecipeApp.Classes
 			return totalCalories > 300;
 		}
 		
-
+		// adds all the recipe names to the collection 
 		public void addRecipe(string recipeName)
 		{
-			AllRecipes.Add(recipeName, this);
+			AllRecipes.Add(recipeName, this); // adding the recipe name to te AllRecipes collection
 		}
 
 
 		// creating method to display list of all recipe names:
 		public void displayRecipeNames()
 		{
-			int index = 1;
-			foreach (var recipeName in AllRecipes.Keys.OrderBy(name => name))
+			int index = 1; // intializing an index number for the recipe names 
+
+			// loops through each recipe name and display in alphabetical order
+			foreach (var recipeName in AllRecipes.Keys.OrderBy(name => name)) 
 			{
 				Console.WriteLine($"{index}. {recipeName}");
 				index++;
@@ -295,13 +298,14 @@ namespace SaneleRecipeApp.Classes
 		// creating method to display the recipe, after user has selected it
 		public void displaySelectedRecipe() 
 		{ 
+			// checks if the selected recipe exists in the AllRecipes collection
 			if (AllRecipes.ContainsKey(RecipeName))
 			{
-				AllRecipes[RecipeName].DisplayFinishedRecipe();
+				AllRecipes[RecipeName].DisplayFinishedRecipe(); // if recipe is found --> it displays
 			}
 			else
 			{
-				Console.WriteLine("Recipe was not found in All Recipes...");
+				Console.WriteLine("Recipe was not found in All Recipes..."); // otherwise it displays error message
 			}
 		}
 
