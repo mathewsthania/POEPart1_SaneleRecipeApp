@@ -380,5 +380,3 @@ Description of features
 	  AND THE APPLICATION/ RUNNING WINDOW will close.
 
 	  -------------------------------------------------------------------------------------------------------------------
-
-
